@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: your-application-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: your-application
+  template:
+    metadata:
+      labels:
+        app: your-application
+    spec:
+      containers:
+        - name: your-application
+          image: your-docker-image-name
+          env:
+            - name: MONGO_HOST
+              value: "mongodb-service"
+            - name: MONGO_PORT
+              value: "27017"
